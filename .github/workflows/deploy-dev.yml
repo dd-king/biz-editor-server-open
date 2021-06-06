@@ -30,7 +30,7 @@ jobs:
                   ssh-keyscan "1.117.16.238" >> ~/.ssh/known_hosts
             - name: deploy # 部署
               run: |
-                  ssh root@1.117.16.238 "
+                  ssh work@1.117.16.238 "
                     # 【注意】用 work 账号登录，手动创建 /home/work/imooc-lego 目录
                     # 然后  git clone https://github.com/dd-king/biz-editor-server-open.git -b dev  （私有仓库，使用 github 用户名和密码）
                     # 记得删除 origin ，否则会暴露 github 密码
