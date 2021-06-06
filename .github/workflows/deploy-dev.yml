@@ -25,18 +25,18 @@ jobs:
             - name: set ssh key # 临时设置 ssh key
               run: |
                   mkdir -p ~/.ssh/
-                  echo "${{secrets.WFP_ID_RSA}}" > ~/.ssh/id_rsa # secret 在这里配置 https://github.com/imooc-lego/biz-editor-server/settings/secrets
+                  echo "${{secrets.ROOT_ID_PSA}}" > ~/.ssh/id_rsa # secret 在这里配置 https://github.com/imooc-lego/biz-editor-server/settings/secrets
                   chmod 600 ~/.ssh/id_rsa
-                  ssh-keyscan "182.92.xxx.xxx" >> ~/.ssh/known_hosts
+                  ssh-keyscan "1.117.16.238" >> ~/.ssh/known_hosts
             - name: deploy # 部署
               run: |
-                  ssh work@182.92.xxx.xxx "
+                  ssh root@1.117.16.238 "
                     # 【注意】用 work 账号登录，手动创建 /home/work/imooc-lego 目录
                     # 然后 git clone https://username:password@github.com/imooc-lego/biz-editor-server.git -b dev （私有仓库，使用 github 用户名和密码）
                     # 记得删除 origin ，否则会暴露 github 密码
 
                     cd /home/work/imooc-lego/biz-editor-server;
-                    git remote add origin https://wangfupeng1988:${{secrets.WFP_PASSWORD}}@github.com/imooc-lego/biz-editor-server.git;
+                    git remote add origin https://76884987@qq.com:${{secrets.GIT_KET}}git@github.com:dd-king/biz-editor-server-open.git;
                     git checkout dev;
                     git pull origin dev; # 重新下载最新代码
                     git remote remove origin; # 删除 origin ，否则会暴露 github 密码
