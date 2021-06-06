@@ -13,7 +13,7 @@ const { onerror, onNotFound } = require('./middlewares/error')
 const { isTest } = require('./utils/env')
 const { mailAlarm } = require('./alarm/index')
 
-// 路由
+// 路由测试
 const index = require('./routes/index')
 const users = require('./routes/users')
 const works = require('./routes/works')
